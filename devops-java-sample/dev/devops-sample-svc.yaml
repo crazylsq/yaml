@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    component: ${APP_NAME}
+  name: ${APP_NAME}
+  namespace: dev-${APP_NAME}
+spec:
+  ports:
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    component: ${APP_NAME}
+  sessionAffinity: None
+  type: LoadBalancer
